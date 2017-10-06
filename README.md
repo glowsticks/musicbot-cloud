@@ -1,6 +1,6 @@
-# my RhinoBot: docker pull [quay.io/awaxa/musicbot](https://quay.io/awaxa/musicbot)
+# musicbot-cloud
 
-quay.io should build conveniently runnable Discord MusicBot images from this
+[![on quay.io](https://quay.io/repository/reddit-diabetes/musicbot-cloud/status "on quay.io")](https://quay.io/repository/reddit-diabetes/musicbot-cloud)
 
 these branches contain personalized defaults and various `autoplaylist.txt` sets
 
@@ -23,14 +23,14 @@ from `docker logs`:
 
 ```shell
 rebase_from=$(git rev-parse HEAD)
-for id in $(ssh $host 'docker logs "$(docker ps -qf ancestor=quay.io/awaxa/musicbot:latest)" 2>/dev/null | grep -o v=.* --color=never | cut -b3- | uniq | tr \\n \ '); do echo $(id) | tee -a config/autoplaylist.txt && git add config/autoplaylist.txt && git commit -m "$(youtube-dl --get-title "$(id)")" ; done
+for id in $(ssh $host 'docker logs "$(docker ps -qf ancestor=quay.io/reddit-diabetes/musicbot-cloud:latest)" 2>/dev/null | grep -o v=.* --color=never | cut -b3- | uniq | tr \\n \ '); do echo $(id) | tee -a config/autoplaylist.txt && git add config/autoplaylist.txt && git commit -m "$(youtube-dl --get-title "$(id)")" ; done
 git rebase -i $rebase_from
 ```
 
 ### deploying
 
 ```shell
-docker run -d --env token='abc123' quay.io/awaxa/musicbot:latest
+docker run -d --env token='abc123' quay.io/reddit-diabetes/musicbot-cloud:latest
 ```
 
 - [Docker Tutorial](https://github.com/SexualRhinoceros/MusicBot/wiki/Installation-guide-for-Docker)
