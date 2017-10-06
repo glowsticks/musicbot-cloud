@@ -1,6 +1,6 @@
 # a Discord MusicBot template
 
-+[![on quay.io](https://quay.io/repository/awaxa/musicbot/status "on quay.io")](https://quay.io/repository/awaxa/musicbot)
+[![on quay.io](https://quay.io/repository/awaxa/musicbot/status "on quay.io")](https://quay.io/repository/awaxa/musicbot)
 
 quay.io should build conveniently runnable Discord MusicBot images from this.
 rebuild more rapidly with this image `FROM quay.io/awaxa/musicbot`
