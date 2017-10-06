@@ -1,6 +1,6 @@
-# a Discord MusicBot template
+# musicbot-cloud
 
-[![on quay.io](https://quay.io/repository/awaxa/musicbot/status "on quay.io")](https://quay.io/repository/awaxa/musicbot)
+[![on quay.io](https://quay.io/repository/reddit-diabetes/musicbot-cloud/status "on quay.io")](https://quay.io/repository/reddit-diabetes/musicbot-cloud)
 
 quay.io should build conveniently runnable Discord MusicBot images from this.
 rebuild more rapidly with this image `FROM quay.io/awaxa/musicbot`
@@ -26,14 +26,13 @@ from `docker logs`:
 
 ```shell
 for id in $(cat ~/tmp/playlist-append.txt | grep -o v=.* --color=never | cut -b3- | sort | uniq | tr \\n \  ) ; do echo $id | tee -a config/autoplaylist.txt && git add config/autoplaylist.txt && git commit -m "$(youtube-dl --get-title $id)" ; done
-
 ```
 
 ### deploying
 
 ```shell
-docker pull quay.io/awaxa/musicbot:latest
-docker run -d --name musicbot --restart always --env token='abc123' quay.io/awaxa/musicbot:latest
+docker pull quay.io/reddit-diabetes/musicbot-cloud:eurobeat
+docker run -d --name musicbot_eurobeat --restart always --env token='abc123' quay.io/reddit-diabetes/musicbot-cloud:eurobeat
 ```
 
 - [Docker Tutorial](https://github.com/SexualRhinoceros/MusicBot/wiki/Installation-guide-for-Docker)
