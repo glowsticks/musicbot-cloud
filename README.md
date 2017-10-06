@@ -2,6 +2,9 @@
 
 [![on quay.io](https://quay.io/repository/reddit-diabetes/musicbot-cloud/status "on quay.io")](https://quay.io/repository/reddit-diabetes/musicbot-cloud)
 
+quay.io should build conveniently runnable Discord MusicBot images from this.
+rebuild more rapidly with this image `FROM quay.io/awaxa/musicbot`
+
 these branches contain personalized defaults and various `autoplaylist.txt` sets
 
 I WANT PULL REQUESTS featuring your favorite songs in `autoplaylist.txt` and
