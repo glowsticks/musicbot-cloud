@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:latest
 RUN apk update \
  && apk add python3-dev ca-certificates gcc make linux-headers musl-dev ffmpeg libffi-dev
 ADD requirements.txt /tmp/requirements.txt
