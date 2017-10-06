@@ -4,7 +4,8 @@ quay.io should build conveniently runnable Discord MusicBot images from this
 
 these branches contain personalized defaults and various `autoplaylist.txt` sets
 
-I WANT PULL REQUESTS featuring your favorite songs in `autoplaylist.txt` and ANYTHING else you would suggest.  This means you!
+I WANT PULL REQUESTS featuring your favorite songs in `autoplaylist.txt` and
+ANYTHING else you would suggest.  This means you!
 
 ## developer notes
 
@@ -22,14 +23,14 @@ from `docker logs`:
 
 ```shell
 rebase_from=$(git rev-parse HEAD)
-for id in $(ssh $host 'docker logs "$(docker ps -qf ancestor=quay.io/awaxa/musicbot)" 2>/dev/null | grep -o v=.* --color=never | cut -b3- | uniq | tr \\n \ '); do echo $(id) | tee -a config/autoplaylist.txt && git add config/autoplaylist.txt && git commit -m "$(youtube-dl --get-title "$(id)")" ; done
+for id in $(ssh $host 'docker logs "$(docker ps -qf ancestor=quay.io/awaxa/musicbot:latest)" 2>/dev/null | grep -o v=.* --color=never | cut -b3- | uniq | tr \\n \ '); do echo $(id) | tee -a config/autoplaylist.txt && git add config/autoplaylist.txt && git commit -m "$(youtube-dl --get-title "$(id)")" ; done
 git rebase -i $rebase_from
 ```
 
 ### deploying
 
 ```shell
-docker run -d --restart=unless-stopped,2 --env token='abc123' quay.io/awaxa/musicbot:deploy
+docker run -d --env token='abc123' quay.io/awaxa/musicbot:latest
 ```
 
 - [Docker Tutorial](https://github.com/SexualRhinoceros/MusicBot/wiki/Installation-guide-for-Docker)
