@@ -30,7 +30,7 @@ for id in $(cat ~/tmp/playlist-append.txt | grep -o v=.* --color=never | cut -b3
 
 ```shell
 docker pull quay.io/awaxa/musicbot:latest
-docker run -d --name musicbot --env token='abc123' quay.io/awaxa/musicbot:latest
+docker run -d --name musicbot --restart always --env token='abc123' quay.io/awaxa/musicbot:latest
 ```
 
 - [Docker Tutorial](https://github.com/SexualRhinoceros/MusicBot/wiki/Installation-guide-for-Docker)
