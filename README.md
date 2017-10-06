@@ -29,6 +29,7 @@ for id in $(cat ~/tmp/playlist-append.txt | grep -o v=.* --color=never | cut -b3
 ### deploying
 
 ```shell
+docker pull quay.io/awaxa/musicbot:latest
 docker run -d --env token='abc123' quay.io/awaxa/musicbot:latest
 ```
 
