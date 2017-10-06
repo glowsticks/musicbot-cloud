@@ -22,14 +22,13 @@ echo $(pbpaste) | tee -a config/autoplaylist.txt && git commit -m "$(youtube-dl 
 from `docker logs`:
 
 ```shell
-rebase_from=$(git rev-parse HEAD)
-for id in $(ssh $host 'docker logs "$(docker ps -qf ancestor=quay.io/reddit-diabetes/musicbot-cloud:latest)" 2>/dev/null | grep -o v=.* --color=never | cut -b3- | uniq | tr \\n \ '); do echo $(id) | tee -a config/autoplaylist.txt && git add config/autoplaylist.txt && git commit -m "$(youtube-dl --get-title "$(id)")" ; done
-git rebase -i $rebase_from
+for id in $(cat ~/tmp/playlist-append.txt | grep -o v=.* --color=never | cut -b3- | sort | uniq | tr \\n \  ) ; do echo $id | tee -a config/autoplaylist.txt && git add config/autoplaylist.txt && git commit -m "$(youtube-dl --get-title $id)" ; done
 ```
 
 ### deploying
 
 ```shell
+docker pull quay.io/reddit-diabetes/musicbot-cloud:latest
 docker run -d --env token='abc123' quay.io/reddit-diabetes/musicbot-cloud:latest
 ```
 
