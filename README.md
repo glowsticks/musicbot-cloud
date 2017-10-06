@@ -1,6 +1,6 @@
-# RhinoBot: docker pull quay.io/awaxa/musicbot
+# my RhinoBot: docker pull [quay.io/awaxa/musicbot](https://quay.io/awaxa/musicbot)
 
-quay.io should build conveniently runnable Discord MusicBot images from this repository
+quay.io should build conveniently runnable Discord MusicBot images from this
 
 these branches contain personalized defaults and various `autoplaylist.txt` sets
 
